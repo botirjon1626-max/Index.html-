@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BMAX CLAUDE COMPANY — Online Tools</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 10% 10%, #2563eb55, transparent 30%),
+        radial-gradient(circle at 90% 20%, #9333ea55, transparent 30%),
+        radial-gradient(circle at 50% 100%, #06b6d455, transparent 35%),
+        #050816;
+}
+
+/* HEADER */
+
+header {
+    text-align: center;
+    padding: 55px 20px 30px;
+}
+
+.company {
+    display: inline-block;
+    padding: 9px 18px;
+
+    border: 1px solid #60a5fa66;
+    border-radius: 50px;
+
+    color: #93c5fd;
+    background: #ffffff08;
+
+    font-size: 13px;
+    letter-spacing: 2px;
+
+    margin-bottom: 18px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(38px, 9vw, 70px);
+
+    background: linear-gradient(
+        90deg,
+        #60a5fa,
+        #c084fc,
+        #22d3ee
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+header p {
+    color: #94a3b8;
+    font-size: 17px;
+}
+
+/* SEARCH */
+
+.search-box {
+    max-width: 650px;
+    margin: 15px auto 35px;
+    padding: 0 20px;
+}
+
+.search {
+    width: 100%;
+    padding: 16px 20px;
+
+    border-radius: 50px;
+    border: 1px solid #ffffff20;
+
+    background: #ffffff0d;
+    color: white;
+    outline: none;
+
+    font-size: 16px;
+}
+
+.search::placeholder {
+    color: #94a3b8;
+}
+
+.search:focus {
+    border-color: #60a5fa;
+
+    box-shadow:
+        0 0 25px #3b82f633;
+}
+
+/* TOOLS */
+
+.tools {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 22px;
+}
+
+/* CARD */
+
+.card {
+    padding: 25px;
+
+    border-radius: 24px;
+    border: 1px solid #ffffff15;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff12,
+            #ffffff05
+        );
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 15px 40px #00000035;
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: #60a5fa66;
+
+    box-shadow:
+        0 20px 50px #00000055,
+        0 0 30px #3b82f622;
+}
+
+.icon {
+    font-size: 45px;
+}
+
+.card h2 {
+    margin: 15px 0 8px;
+}
+
+.card p {
+    color: #94a3b8;
+    line-height: 1.5;
+    min-height: 45px;
+}
+
+/* BUTTON */
+
+button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 0;
+    border-radius: 13px;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 20px #6366f155;
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+/* TOOL */
+
+.tool {
+    display: none;
+    margin-top: 18px;
+
+    animation: show .25s ease;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* INPUT */
+
+input,
+textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    margin: 7px 0 10px;
+
+    border-radius: 12px;
+
+    border: 1px solid #ffffff20;
+
+    background: #020617aa;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #60a5fa;
+}
+
+/* RESULT */
+
+.result {
+    margin-top: 12px;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background: #02061799;
+
+    color: #93c5fd;
+
+    word-break: break-word;
+
+    text-align: center;
+}
+
+.result img {
+    max-width: 200px;
+
+    border-radius: 10px;
+
+    margin-top: 5px;
+}
+
+/* COLOR */
+
+#colorBox {
+    width: 100%;
+    height: 55px;
+
+    border-radius: 12px;
+
+    margin-top: 8px;
+
+    border: 1px solid #ffffff30;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 50px 20px 30px;
+
+    color: #64748b;
+}
+
+.footer-brand {
+    color: #93c5fd;
+
+    font-weight: bold;
+}
+
+/* TOP BUTTON */
+
+.top {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    z-index: 10;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header {
+        padding-top: 35px;
+    }
+
+    header h1 {
+        font-size: 40px;
+    }
+
+    .tools {
+        padding: 15px;
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="company">
+        BMAX CLAUDE COMPANY
+    </div>
+
+    <h1>🛠️ Online Tools</h1>
+
+    <p>
+        Powerful tools. Simple experience.
+    </p>
+
+</header>
+
+<div class="search-box">
+
+    <input
+        class="search"
+        id="search"
+        placeholder="🔎 Tool qidirish..."
+        oninput="searchTools()">
+
+</div>
+
+<main class="tools">
+
+<!-- QR GENERATOR -->
+
+<div class="card">
+
+    <div class="icon">🔳</div>
+
+    <h2>QR Generator</h2>
+
+    <p>
+        Matn yoki havoladan QR Code yarating.
+    </p>
+
+    <button onclick="openTool('qr')">
+        Ochish
+    </button>
+
+    <div id="qr" class="tool">
+
+        <input
+            id="qrText"
+            placeholder="Link yoki matn yozing">
+
+        <button onclick="makeQR()">
+            QR yaratish
+        </button>
+
+        <div id="qrResult" class="result"></div>
+
+    </div>
+
+</div>
+
+
+<!-- PASSWORD -->
+
+<div class="card">
+
+    <div class="icon">🔐</div>
+
+    <h2>Password Generator</h2>
+
+    <p>
+        Kuchli tasodifiy parol yarating.
+    </p>
+
+    <button onclick="openTool('password')">
+        Ochish
+    </button>
+
+    <div id="password" class="tool">
+
+        <button onclick="makePassword()">
+            Parol yaratish
+        </button>
+
+        <div id="passwordResult" class="result"></div>
+
+    </div>
+
+</div>
+
+
+<!-- CALCULATOR -->
+
+<div class="card">
+
+    <div class="icon">🧮</div>
+
+    <h2>Calculator</h2>
+
+    <p>
+        Tez va oson hisob-kitob qiling.
+    </p>
+
+    <button onclick="openTool('calculator')">
+        Ochish
+    </button>
+
+    <div id="calculator" class="tool">
+
+        <input
+            id="calc"
+            placeholder="Masalan: 25 + 10 * 2">
+
+        <button onclick="calculate()">
+            Hisoblash
+        </button>
+
+        <div id="calcResult" class="result"></div>
+
+    </div>
+
+</div>
+
+
+<!-- TEXT COUNTER -->
+
+<div class="card">
+
+    <div class="icon">📝</div>
+
+    <h2>Text Counter</h2>
+
+    <p>
+        So‘z va belgilarni hisoblang.
+    </p>
+
+    <button onclick="openTool('counter')">
+        Ochish
+    </button>
+
+    <div id="counter" class="tool">
+
+        <textarea
+            id="counterText"
+            rows="5"
+            placeholder="Matn yozing..."
+            oninput="countText()"></textarea>
+
+        <div id="counterResult" class="result">
+            So‘z: 0 | Belgilar: 0
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TEXT CONVERTER -->
+
+<div class="card">
+
+    <div class="icon">🔠</div>
+
+    <h2>Text Converter</h2>
+
+    <p>
+        Matnni katta yoki kichik harflarga aylantiring.
+    </p>
+
+    <button onclick="openTool('converter')">
+        Ochish
+    </button>
+
+    <div id="converter" class="tool">
+
+        <textarea
+            id="converterText"
+            rows="4"
+            placeholder="Matn yozing..."></textarea>
+
+        <button onclick="upper()">
+            KATTA HARF
+        </button>
+
+        <br><br>
+
+        <button onclick="lower()">
+            kichik harf
+        </button>
+
+        <div id="converterResult" class="result"></div>
+
+    </div>
+
+</div>
+
+
+<!-- COLOR PICKER -->
+
+<div class="card">
+
+    <div class="icon">🎨</div>
+
+    <h2>Color Picker</h2>
+
+    <p>
+        Rang tanlang va HEX kodini oling.
+    </p>
+
+    <button onclick="openTool('color')">
+        Ochish
+    </button>
+
+    <div id="color" class="tool">
+
+        <input
+            type="color"
+            id="colorPicker"
+            value="#3b82f6"
+            onchange="showColor()">
+
+        <div id="colorBox"></div>
+
+        <div id="colorResult" class="result">
+            #3b82f6
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-brand">
+        BMAX CLAUDE COMPANY
+    </div>
+
+    <p>
+        © 2026 — Online Tools
+    </p>
+
+</footer>
+
+
+<button
+    class="top"
+    onclick="window.scrollTo(0,0)">
+
+    ↑
+
+</button>
+
+
+<script>
+
+/* TOOL OCHISH */
+
+function openTool(id) {
+
+    const tool =
+        document.getElementById(id);
+
+    if (tool.style.display === "block") {
+
+        tool.style.display = "none";
+
+    } else {
+
+        tool.style.display = "block";
+
+    }
+}
+
+
+/* QIDIRUV */
+
+function searchTools() {
+
+    const search =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+}
+
+
+/* QR */
+
+function makeQR() {
+
+    const text =
+        document
+        .getElementById("qrText")
+        .value
+        .trim();
+
+    const result =
+        document.getElementById("qrResult");
+
+    if (!text) {
+
+        result.innerText =
+            "⚠️ Matn yoki link kiriting!";
+
+        return;
+    }
+
+    const url =
+        "https://api.qrserver.com/v1/create-qr-code/" +
+        "?size=220x220&data=" +
+        encodeURIComponent(text);
+
+    result.innerHTML =
+        "<p>QR Code:</p>" +
+        '<img src="' +
+        url +
+        '" alt="QR Code">' +
+        "<p>✅ Tayyor!</p>";
+}
+
+
+/* PASSWORD */
+
+function makePassword() {
+
+    const chars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+        "abcdefghijklmnopqrstuvwxyz" +
+        "0123456789!@#$%^&*";
+
+    let password = "";
+
+    for (let i = 0; i < 16; i++) {
+
+        password +=
+            chars[
+                Math.floor(
+                    Math.random() *
+                    chars.length
+                )
+            ];
+    }
+
+    document
+    .getElementById("passwordResult")
+    .innerText =
+        password;
+}
+
+
+/* CALCULATOR */
+
+function calculate() {
+
+    const expression =
+        document
+        .getElementById("calc")
+        .value
+        .trim();
+
+    const result =
+        document
+        .getElementById("calcResult");
+
+    if (
+        !/^[0-9+\-*/().%\s]+$/
+        .test(expression)
+    ) {
+
+        result.innerText =
+            "⚠️ Faqat raqam va matematik belgilar!";
+
+        return;
+    }
+
+    try {
+
+        const answer =
+            Function(
+                '"use strict"; return (' +
+                expression +
+                ')'
+            )();
+
+        result.innerText =
+            "✅ Natija: " +
+            answer;
+
+    } catch (error) {
+
+        result.innerText =
+            "❌ Hisoblashda xatolik.";
+    }
+}
+
+
+/* TEXT COUNTER */
+
+function countText() {
+
+    const text =
+        document
+        .getElementById("counterText")
+        .value;
+
+    const words =
+        text.trim()
+        ? text.trim().split(/\s+/).length
+        : 0;
+
+    const chars =
+        text.length;
+
+    document
+    .getElementById("counterResult")
+    .innerText =
+        "📝 So‘z: " +
+        words +
+        " | Belgilar: " +
+        chars;
+}
+
+
+/* KATTA HARF */
+
+function upper() {
+
+    const text =
+        document
+        .getElementById("converterText")
+        .value;
+
+    document
+    .getElementById("converterResult")
+    .innerText =
+        text.toUpperCase();
+}
+
+
+/* KICHIK HARF */
+
+function lower() {
+
+    const text =
+        document
+        .getElementById("converterText")
+        .value;
+
+    document
+    .getElementById("converterResult")
+    .innerText =
+        text.toLowerCase();
+}
+
+
+/* COLOR */
+
+function showColor() {
+
+    const color =
+        document
+        .getElementById("colorPicker")
+        .value;
+
+    document
+    .getElementById("colorBox")
+    .style.background =
+        color;
+
+    document
+    .getElementById("colorResult")
+    .innerText =
+        color;
+}
+
+showColor();
+
+</script>
+
+</body>
+</html>
